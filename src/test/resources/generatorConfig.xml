@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <classPathEntry
+            location="I:/useful/repository/mysql/mysql-connector-java/5.1.40/mysql-connector-java-5.1.40.jar"/>
+
+    <!-- 生成网商法院dal配置 -->
+    <context id="demo" targetRuntime="MyBatis3">
+        <property name="suppressAllComments" value="true"/>
+        <property name="useActualColumnNames" value="false"/>
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 配置插件 -->
+        <plugin type="com.flag.mybatis.plugins.LombokPlugin"/>
+        <plugin type="com.flag.mybatis.plugins.XmlMapperPlugin"/>
+        <plugin type="com.flag.mybatis.plugins.ServicePlugin">
+            <property name="basePath" value="I:\project\mybatis-generator-ext\src\test\java\"/>
+        </plugin>
+
+        <commentGenerator type="com.flag.mybatis.generator.CustomizeCommentGenerator"/>
+
+        <!-- 配置数据库连接 -->
+        <jdbcConnection driverClass="org.gjt.mm.mysql.Driver"
+                        connectionURL="jdbc:mysql:/127.0.0.1:3306/test"
+                        userId="testdb" password="testdb"/>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成文件位置 -->
+        <javaModelGenerator targetPackage="com.flag.generate.model"
+                            targetProject="src/test/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.flag.generate.mapper"
+                         targetProject="src/test/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.flag.generate" targetProject="src/test/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="yantar_async_task_group" enableUpdateByExample="false">
+
+            <property name="servicePackage" value="com.flag.generate.service"/>
+        </table>
+
+    </context>
+</generatorConfiguration>

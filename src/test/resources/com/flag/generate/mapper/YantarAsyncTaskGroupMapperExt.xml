@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.flag.generate.YantarAsyncTaskGroupMapperExt">
+  <insert id="insertBatch" parameterType="java.util.List">
+     INSERT INTO yantar_async_task_group(
+    <trim suffix="" suffixOverrides=",">
+      id,source_code,operator,task_type,business_id,display_name,handler,context,start_time,end_time,status,gmt_create,creator,gmt_modified,modifier,is_deleted,is_secret,parent_id,finish_count,total_count,task_tag,tenant_id,params,
+    </trim>
+    )values
+    <foreach collection="list" item="item" separator=",">
+      (
+      <trim suffix="" suffixOverrides=",">
+        <if test="id != null">
+          id = #{item.id},
+        </if>
+        <if test="sourceCode != null">
+          source_code = #{item.sourceCode},
+        </if>
+        <if test="sourceCode == null">
+          source_code = ''
+        </if>
+        <if test="operator != null">
+          operator = #{item.operator},
+        </if>
+        <if test="operator == null">
+          operator = ''
+        </if>
+        <if test="taskType != null">
+          task_type = #{item.taskType},
+        </if>
+        <if test="taskType == null">
+          task_type = ''
+        </if>
+        <if test="businessId != null">
+          business_id = #{item.businessId},
+        </if>
+        <if test="businessId == null">
+          business_id = 0
+        </if>
+        <if test="displayName != null">
+          display_name = #{item.displayName},
+        </if>
+        <if test="displayName == null">
+          display_name = ''
+        </if>
+        <if test="handler != null">
+          handler = #{item.handler},
+        </if>
+        <if test="handler == null">
+          handler = ''
+        </if>
+        <if test="context != null">
+          context = #{item.context},
+        </if>
+        <if test="context == null">
+          context = ''
+        </if>
+        <if test="startTime != null">
+          start_time = #{item.startTime},
+        </if>
+        <if test="startTime == null">
+          start_time = now()
+        </if>
+        <if test="endTime != null">
+          end_time = #{item.endTime},
+        </if>
+        <if test="endTime == null">
+          end_time = now()
+        </if>
+        <if test="status != null">
+          status = #{item.status},
+        </if>
+        <if test="status == null">
+          status = ''
+        </if>
+        <if test="gmtCreate != null">
+          gmt_create = #{item.gmtCreate},
+        </if>
+        <if test="gmtCreate == null">
+          gmt_create = now()
+        </if>
+        <if test="creator != null">
+          creator = #{item.creator},
+        </if>
+        <if test="creator == null">
+          creator = ''
+        </if>
+        <if test="gmtModified != null">
+          gmt_modified = #{item.gmtModified},
+        </if>
+        <if test="gmtModified == null">
+          gmt_modified = now()
+        </if>
+        <if test="modifier != null">
+          modifier = #{item.modifier},
+        </if>
+        <if test="modifier == null">
+          modifier = ''
+        </if>
+        <if test="isDeleted != null">
+          is_deleted = #{item.isDeleted},
+        </if>
+        <if test="isDeleted == null">
+          is_deleted = ''
+        </if>
+        <if test="isSecret != null">
+          is_secret = #{item.isSecret},
+        </if>
+        <if test="isSecret == null">
+          is_secret = ''
+        </if>
+        <if test="parentId != null">
+          parent_id = #{item.parentId},
+        </if>
+        <if test="parentId == null">
+          parent_id = 0
+        </if>
+        <if test="finishCount != null">
+          finish_count = #{item.finishCount},
+        </if>
+        <if test="finishCount == null">
+          finish_count = 0
+        </if>
+        <if test="totalCount != null">
+          total_count = #{item.totalCount},
+        </if>
+        <if test="totalCount == null">
+          total_count = 0
+        </if>
+        <if test="taskTag != null">
+          task_tag = #{item.taskTag},
+        </if>
+        <if test="taskTag == null">
+          task_tag = ''
+        </if>
+        <if test="tenantId != null">
+          tenant_id = #{item.tenantId},
+        </if>
+        <if test="tenantId == null">
+          tenant_id = 0
+        </if>
+        <if test="params != null">
+          params = #{item.params},
+        </if>
+        <if test="params == null">
+          params = ''
+        </if>
+      </trim>
+      )
+    </foreach>
+  </insert>
+</mapper>
