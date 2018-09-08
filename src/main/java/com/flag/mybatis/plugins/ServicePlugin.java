@@ -2,6 +2,7 @@ package com.flag.mybatis.plugins;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -54,7 +55,9 @@ public class ServicePlugin extends PluginAdapter {
         FullyQualifiedJavaType serviceType = new FullyQualifiedJavaType(packagePath + "." + serviceImplName);
         GeneratedJavaFile serviceInterfaceFile = generateServiceInterfaceFile(serviceType, exampleName, entityName,
             servicePath);
-
+        if (serviceInterfaceFile == null) {
+            return Collections.EMPTY_LIST;
+        }
         List<GeneratedJavaFile> generatedJavaFiles = new ArrayList<GeneratedJavaFile>(2);
         generatedJavaFiles.add(serviceInterfaceFile);
         // 建立serviceImpl类
